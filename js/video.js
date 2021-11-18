@@ -32,15 +32,20 @@ document.querySelector("#faster").addEventListener("click", function() {
 
 
 document.querySelector("#skip").addEventListener("click", function() {
-	console.log(video.currentTime);
-    video.currentTime = video.currentTime + 15;
-	if (video.ended) {
+	console.log(video.currentTime)
+    //video.currentTime = video.currentTime + 15;
+	video.currentTime = video.currentTime + 15
+
+	if (video.currentTime >= video.duration){
+		video.currentTime = 0
+	}
+	//if (video.ended) {
 		// reset playback
-		video.load();
-		video.play();
+		//video.load();
+		//video.play();
 		// reset speed
-		playbackRate = 1;
-	}});
+		//playbackRate = 1;
+	})
 
 
 document.querySelector("#mute").addEventListener("click", function() {
@@ -55,7 +60,7 @@ document.querySelector("#mute").addEventListener("click", function() {
 });
 
 
-document.querySelector("#slider").addEventListener("click", function() {
+document.querySelector("#slider").addEventListener("change", function() {
 	var sound = this.value
 	console.log(sound)
 	document.querySelector("#volume").innerHTML = sound + "%"
